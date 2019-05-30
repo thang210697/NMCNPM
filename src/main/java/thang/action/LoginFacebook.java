@@ -33,10 +33,10 @@ public class LoginFacebook extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String code = request.getParameter("code");
+		String code = request.getParameter("code"); //nhận đoạn code từ facebook
 		
-		String accessToken = RestFB.getToken(code);
-	      User user = RestFB.getUserInfo(accessToken);
+		String accessToken = RestFB.getToken(code);// xử lí đoạn code lấy accesstoken
+	      User user = RestFB.getUserInfo(accessToken);// xử lí accesstoken lấy id và tên tài khoản
 	      request.setAttribute("info1", user.getId());
 	      request.setAttribute("info2", user.getName());
 	      RequestDispatcher dis = request.getRequestDispatcher("/WEB-INF/jsp/success.jsp");
