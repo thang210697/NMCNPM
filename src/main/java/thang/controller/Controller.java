@@ -1,4 +1,4 @@
-package thang.controller;
+﻿package thang.controller;
 
 import java.io.IOException;
 
@@ -30,6 +30,7 @@ public class Controller extends HttpServlet {
 		String url;
 		String action = request.getParameter("action");
 		switch (action) {
+// 1.2.1 sequence 
 		case "regisform":   //chuyển tới trang đăng ký
 			try {
 			
@@ -54,6 +55,7 @@ public class Controller extends HttpServlet {
 			RequestDispatcher dispatcher1 = getServletContext().getRequestDispatcher(url);
 			dispatcher1.forward(request,response);
 			break;
+		// 2.1 forward() sang class ConfirmReg
 		case "valid":
 			url = "/validemail";
 			RequestDispatcher dispatcher2 = getServletContext().getRequestDispatcher(url);

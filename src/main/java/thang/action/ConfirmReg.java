@@ -1,4 +1,4 @@
-package thang.action;
+﻿package thang.action;
 
 import java.io.IOException;
 
@@ -45,7 +45,9 @@ public class ConfirmReg extends HttpServlet {
 				if (email.equals(user.getEmail())) {
 					if (number.equals(user.getCode())) { // mã xác nhận chính xác
 						User userr = new User(user.getFname(),user.getLname(),user.getEmail(),user.getNumber(),user.getPassword());
+						//2.1.1 inserUser 
 						userDAO.insertUser(userr);
+						//2.1.2 removeUser khoi temp
 						userDAO.removeUser(user); System.out.println(userDAO.getListTemp().size());
 						request.setAttribute("info1", user.getFname());
 						request.setAttribute("info2", user.getEmail());

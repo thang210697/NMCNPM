@@ -1,4 +1,4 @@
-package thang.action;
+﻿package thang.action;
 
 import java.io.IOException;
 import java.util.Random;
@@ -57,7 +57,9 @@ public class Register extends HttpServlet {
         int num = random.nextInt(100000);
         String code = String.format("%05d", num);
         UserTemp user = new UserTemp(fname,lname,email,number,password,code);
-		userDAO.getListTemp().add(user);System.out.println(userDAO.getListTemp().size());
+		// 1.2.1.1 insertTemp()
+		userDAO.insertTemp(user);System.out.println(userDAO.getListTemp().size());
+		// 1.2.1.2 send  - gửi mail xác nhận
 		MailSender.send(email, "Please Confirm", code);  // gửi mail
 		
 		String url = "/confirm?email="+email;      // redirect trang xác nhận có chứa thông số là email
